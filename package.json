@@ -1,0 +1,27 @@
+{
+  "name": "gitproject1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lmlevaccare/project1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lmlevaccare/project1/issues"
+  },
+  "homepage": "https://github.com/lmlevaccare/project1#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-fetch": "^3.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
