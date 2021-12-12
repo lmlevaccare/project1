@@ -1,0 +1,5 @@
+v = 1           //protocol version
+t = pageview    //hit type i.e pageview, screenview, event
+tid = G-EHDX9LC20M //measurement id; all data collected by this id
+cid = 555           //add client id here to track
+dp = %2Fhome        //document path
