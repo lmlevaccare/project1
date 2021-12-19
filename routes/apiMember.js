@@ -45,6 +45,19 @@ fowlerMembers.push(newMember)
 res.json(fowlerMembers)
  });
 
+ //DELETE ROUTE ADDED
+
+ router.delete('/:id',(req, res) => {
+    // res.send(req.params.id);
+    const found = fowlerMembers.some(member => member.id === parseInt(req.params.id))
+
+    if (found) {
+    res.json({msg:'Member Deleted', members: fowlerMembers.filter(member => member.id !== parseInt(req.params.id))})
+    } else {
+        res.status(400).json({msg: `No Member with the id of ${req.params.id}`})
+    }
+});
+
  //PUT ROUTE CREATED to UPDATE MEMBERS 
 
  router.put('/:id',(req, res) => {
