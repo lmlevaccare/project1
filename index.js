@@ -1,9 +1,31 @@
 const express = require ('express');
-const { suppressDeprecationWarnings } = require('moment');
+const { engine } = require('express-handlebars');
+// const moment = require('moment');
 const path = require('path');
-const logger = require('./middleware/logger')
+const logger = require('./middleware/logger');
+const members = require ('./Members');
 
 const app = express();
+
+//handlebars middleware
+// app.engine('handlebars',exphbs({defaultLayout: 'main'}));
+// app.set('view engine', 'handlebars');
+
+
+app.engine('handlebars', engine({defaultLayout: "main"}));
+app.set('view engine', 'handlebars');
+
+
+
+//HANDLEBARS HOME PAGE ROUTE
+app.get('/', (req, res) => {
+    res.render('index', {title:'Members ONLY App',members});
+});
+
+
+//HOME PAGE ROUTE 
+
+app.get('/', (req , res) => res.render ('index'));
 
 //body parser middleware for post req (use to send json post)
 app.use(express.json());
@@ -12,8 +34,9 @@ app.use(express.json());
 
 app.use(express.urlencoded({extended: false}))
 
-app.use(logger)
 
+
+app.use(logger)
 
 
 app.get('/', (reg,res) => {
