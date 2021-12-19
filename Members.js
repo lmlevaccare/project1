@@ -17,7 +17,13 @@ id: 3,
 name: "Stella fowler",
 email: "stellars@yahoo.com",
 status: "spoiled and sloppy"
-    }
+    },
+{
+id: 4,
+name: "James fowler",
+email: "james@yahoo.com",
+status: "spoiled and braty"
+}
 
 ];
 

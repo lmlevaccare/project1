@@ -3,6 +3,7 @@ const uuid = require ('uuid')
 const router = express.Router()
 const fowlerMembers = require('../Members')
 
+//GET REQUEST 
 //get all members
 router.get('/',(req, res) => {
 
@@ -22,7 +23,9 @@ router.get('/:id',(req, res) => {
      }
  });
 
+ //POST ROUTE CREATED
  //create member POST request post to hit members route 
+
  router.post('/', (req, res) => {
 // res.send(req.body)
 const newMember = {
@@ -41,5 +44,28 @@ if(!newMember.name ||!newMember.email ) {
 fowlerMembers.push(newMember)
 res.json(fowlerMembers)
  });
+
+ //PUT ROUTE CREATED to UPDATE MEMBERS 
+
+ router.put('/:id',(req, res) => {
+    // res.send(req.params.id);
+    const found = fowlerMembers.some(member => member.id === parseInt(req.params.id))
+
+    if (found) {
+const updMember = req.body;
+fowlerMembers.forEach(member => {
+    if(member.id === parseInt(req.params.id)){
+        //terinary opperator to say if updated name or email included then use if not use old name
+member.name = updMember.name ? updMember.name : member.name;
+member.email = updMember.email ? updMember.email : member.email;
+
+res.json({msg: 'member upated', member});
+}
+});
+
+    } else {
+        res.status(400).json({msg: `No Member with the id of ${req.params.id}`})
+    }
+});
 
  module.exports = router;
